@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 
 export const login = async (username, password) => {
   const user = await db.oneOrNone(
-    "SELECT * FROM todos.person WHERE name = ${username}",
+    "SELECT * FROM todoapp.person WHERE name = ${username}",
     {
       username,
     }

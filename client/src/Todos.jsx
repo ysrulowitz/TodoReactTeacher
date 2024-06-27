@@ -18,6 +18,42 @@ export default function Todos({ userId }) {
     setTasks(result);
   }
 
+  async function removeTask(taskId) {
+    const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+        method: "DELETE",
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({userId: user})
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+    setTasks(
+      tasks.filter((task)=> task.id !==taskId)
+    );
+  };
+
+  async function doneTask(taskId) {
+    const response = await fetch(`http://localhost:3000/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({userId: user})
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      setTasks(
+        tasks.map((task)=> 
+          task.id === taskId ? { ...task, done: true } : task
+          )
+      );
+  };
+
   useEffect(() => {
     loadTasks();
   }, []);
@@ -31,7 +67,7 @@ export default function Todos({ userId }) {
           {tasks
             .filter((task) => !task.done)
             .map((task) => (
-              <Task task={task} key={task.id} />
+              <Task task={task} key={task.id} removeTask= {removeTask} doneTask={doneTask}/>
             ))}
         </section>
         <section className="task-list completed" id="done-list">
@@ -39,7 +75,7 @@ export default function Todos({ userId }) {
           {tasks
             .filter((task) => task.done)
             .map((task) => (
-              <Task task={task} key={task.id} />
+              <Task task={task} key={task.id} removeTask= {removeTask} doneTask={doneTask}/>
             ))}
         </section>
       </div>

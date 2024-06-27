@@ -19,6 +19,7 @@ function Login({ setCurrentUser }) {
     });
     const result = await res.json();
     setCurrentUser(result.user_id);
+    console.log(result.user_id)
     navigate("/todos", { state: { userId: result.user_id } });
   }
 
