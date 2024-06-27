@@ -6,7 +6,7 @@ export default function NewTask({ updateTasks }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    await fetch("http://localhost:7000/tasks", {
+    await fetch("http://localhost:3000/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -9,9 +9,11 @@ router.use(passport.authenticate('cookie', {
 import { createTask, deleteTask, getTasks, markTaskAsDone } from "../controllers/tasks.js";
 
 router.post("/", async (req, res, next) => {
+  console.log(req.body.title, req.body.user_id)
   try {
     res.json(await createTask(req.body.title, req.body.user_id));
   } catch (e) {
+    // res.json(e)
     next(e);
   }
 });

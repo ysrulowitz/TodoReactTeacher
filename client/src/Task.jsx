@@ -1,4 +1,14 @@
-export default function Task({ task }) {
+export default function Task({ task ,removeTask, doneTask}) {
+
+  const handleDelete = ()=>{
+    removeTask(task.id)
+  }
+
+  const handleDone = ()=>{
+    doneTask(task.id)
+  }
+
+
   return (
     <div className="task">
       <p>
@@ -8,7 +18,7 @@ export default function Task({ task }) {
         {task.done ? (
           <></>
         ) : (
-          <button onClick={() => console.log("click")}>
+          <button onClick={() => handleDone()}>
             <svg
               width="19"
               height="24"
@@ -24,7 +34,7 @@ export default function Task({ task }) {
             </svg>
           </button>
         )}
-        <button>
+        <button  onClick={() =>handleDelete()}>
           <svg
             width="19"
             height="24"

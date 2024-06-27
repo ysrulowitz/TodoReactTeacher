@@ -2,7 +2,7 @@ import db from "./db.js";
 
 export const createTask = async (title, user_id) => {
   const result = await db.one(
-    "insert into todos.task (title, user_id) values (${title}, ${user_id}) returning *",
+    "insert into todoapp.task (title, user_id) values (${title}, ${user_id}) returning *",
     {
       title,
       user_id,
@@ -28,15 +28,15 @@ export const getTasks = async (user_id) => {
 };
 
 export const markTaskAsDone = async (id) => {
-  await db.none("update todos.task set status = 'done' where id = ${id}", {
+  await db.none("update todoapp.task set status = 'done' where id = ${id}", {
     id,
   });
   return { ok: true };
 };
 
 export const deleteTask = async (id) => {
-  await db.none("update todos.task set deleted_at = now() where id = ${id}", {
-    id: req.params.id,
+  await db.none("update todoapp.task set deleted_at = now() where id = ${id}", {
+    id: id,
   });
   return { ok: true };
 };

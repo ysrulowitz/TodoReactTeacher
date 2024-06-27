@@ -9,7 +9,7 @@ export const createUser = async ({ name, password }) => {
     let passhash = await bcrypt.hash(password, 10);
 
     user = await db.one(
-      "INSERT INTO todos.person (name, pass) VALUES (${name}, ${passhash}) RETURNING *;",
+      "INSERT INTO todoapp.person (name, pass) VALUES (${name}, ${passhash}) RETURNING *;",
       {
         passhash,
         name,
