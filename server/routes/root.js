@@ -12,7 +12,7 @@ import jwt from 'jsonwebtoken'
 
 async function verify(username, password, done) {
   const user = await db.oneOrNone(
-    "SELECT * FROM todos.person WHERE name = ${username}",
+    "SELECT * FROM todoapp.person WHERE name = ${username}",
     {
       username,
     }

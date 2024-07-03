@@ -16,6 +16,7 @@ export const createUser = async ({ name, password }) => {
       }
     );
   } catch (e) {
+    console.log(e)
     if (e.message.includes("unique_email_cstr")) {
       throw Boom.badData(`User already exists`);
     }
