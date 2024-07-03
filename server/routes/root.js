@@ -1,8 +1,4 @@
 import { Router } from "express";
-
-import {dirname, join} from 'path';
-import { fileURLToPath} from 'url';
-import { login } from "../controllers/auth.js";
 import passport from "passport";
 import LocalStrategy from "passport-local";
 import CookieStrategy from 'passport-cookie';
@@ -30,31 +26,33 @@ async function verify(username, password, done) {
 }
 
 function verifyCookie(token, done) {
-
+console.log("verifycoo",token)
   const result = jwt.verify(token, "a-very-very-strong-and-super-secret-secret")
+  console.log("verify", result)
   return done(null, result.user);
 }
 
 const localStrategy = new LocalStrategy(verify);
 passport.use(localStrategy);
-const cookieStrategy = new CookieStrategy(
-  verifyCookie
-);
+
+const cookieStrategy = new CookieStrategy(verifyCookie);
 passport.use(cookieStrategy);
+
 const router = Router();
-router.post('/', (req, res, next) => {
-    next(new Error('This is a bad request'));
-})
 
-router.all("/", (req, res, next) => {
-  console.log("/ was called");
-  next();
-});
+// router.post('/', (req, res, next) => {
+//     next(new Error('This is a bad request'));
+// })
 
-router.get("/", (req, res, next) => {
-  console.log("Incoming to /");
-  res.send("Server is up and running");
-});
+// router.all("/", (req, res, next) => {
+//   console.log("/ was called");
+//   next();
+// });
+
+// router.get("/", (req, res, next) => {
+//   console.log("Incoming to /");
+//   res.send("Server is up and running");
+// });
 
 
 export default router;

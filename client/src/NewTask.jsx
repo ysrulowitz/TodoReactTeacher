@@ -11,9 +11,11 @@ export default function NewTask({ updateTasks }) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
+      
       body: JSON.stringify({
         title: event.target.elements.title.value,
-        user_id: userId,
+        //user_id: userId,
       }),
     });
     updateTasks();

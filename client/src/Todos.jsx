@@ -37,6 +37,7 @@ export default function Todos({ userId }) {
         headers: {
           'content-type': 'application/json'
         },
+        credentials: "include",
         body: JSON.stringify({userId: user})
       });
 
@@ -54,6 +55,7 @@ export default function Todos({ userId }) {
         headers: {
           'content-type': 'application/json'
         },
+        credentials: "include",
         body: JSON.stringify({userId: user})
       });
 

@@ -13,9 +13,9 @@ export const login = async (username, password) => {
   if (!user) throw boom.forbidden("User does not exist");
   let isPasswordCompared = await bcrypt.compare(password, user.pass);
 
-  // if(!isPasswordCompared){
-  //     throw boom.forbidden('Password does not match');
-  // }
+  if(!isPasswordCompared){
+      throw boom.forbidden('Password does not match');
+  }
 
   return user;
 };

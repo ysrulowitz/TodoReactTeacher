@@ -27,16 +27,18 @@ export const getTasks = async (user_id) => {
   }));
 };
 
-export const markTaskAsDone = async (id) => {
-  await db.none("update todoapp.task set status = 'done' where id = ${id}", {
-    id,
+export const markTaskAsDone = async (taskId, userId) => {
+  await db.none("update todoapp.task set status = 'done' where id = ${taskId} and user_id =${userId}", {
+    taskId,
+    userId,
   });
   return { ok: true };
 };
 
-export const deleteTask = async (id) => {
-  await db.none("update todoapp.task set deleted_at = now() where id = ${id}", {
-    id: id,
-  });
+export const deleteTask = async (taskId, userId) => {
+  await db.none("update todoapp.task set deleted_at = now() where id = ${taskId} and user_id =${userId}", {
+    taskId,
+    userId,
+    });
   return { ok: true };
 };
