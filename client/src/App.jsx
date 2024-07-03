@@ -20,10 +20,7 @@ function App() {
     {
       path: "/todos",
       element: <Todos />,
-    },
-      path: "/todos",
-      element: <Todos />,
-    },
+    }
   ]);
   return (
     <>
@@ -35,8 +32,6 @@ function App() {
       </AuthContext.Provider>
     </>
   );
-  );
 }
 
-export default App;
 export default App;
