@@ -27,9 +27,6 @@ function App() {
       <AuthContext.Provider value={currentUser}>
         <RouterProvider router={router} />
       </AuthContext.Provider>
-      <AuthContext.Provider value={currentUser}>
-        <RouterProvider router={router} />
-      </AuthContext.Provider>
     </>
   );
 }
