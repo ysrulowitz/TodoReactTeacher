@@ -53,10 +53,9 @@ export default function Task({ task, removeTask, doneTask }) {
       <div className="task-img-container">
         <img
           className="task-img"
-          width={"100px"}
-          height={"100px"}
           src={`http://localhost:3000/images/${task.url}`}
           alt=""
+          onError={({target})=>target.src = `http://localhost:3000/images/placeholder`}
         />
       </div>
     </div>

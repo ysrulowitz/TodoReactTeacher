@@ -206,9 +206,12 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 150px;
   border: 1px dotted black;
+  font-weight: lighter;
+  font-size: small;
+  border-radius: 10px;
 }
 
 .preview-container.isDragging{
@@ -229,7 +232,7 @@ input {
 .task-img-container{
   padding: 5px;
   height: 200px;
-  width: 100%;
+  width: 250px;
   margin-bottom: 15px;
 }
 
