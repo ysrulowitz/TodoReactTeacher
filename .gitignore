@@ -1,5 +1,17 @@
+# Ignore system files
 .DS_Store
 
+# Ignore node modules
 node_modules/
 
+# Ignore environment variable files
 .env
+
+# Ignore everything in the uploads folder
+uploads/*
+
+# Do not ignore the uploads folder itself
+!uploads/
+
+# Except the placeholder file
+!uploads/placeholder

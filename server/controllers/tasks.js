@@ -1,11 +1,12 @@
 import db from "./db.js";
 
-export const createTask = async (title, user_id) => {
+export const createTask = async (title, user_id, url) => {
   const result = await db.one(
-    "insert into todoapp.task (title, user_id) values (${title}, ${user_id}) returning *",
+    "insert into todoapp.task (title, user_id, url) values (${title}, ${user_id}, ${url} ) returning *",
     {
       title,
       user_id,
+      url
     }
   );
   return {
@@ -23,6 +24,7 @@ export const getTasks = async (user_id) => {
   return result.map((task) => ({
     id: task.id,
     title: task.title,
+    url: task.url,
     done: task.status !== "active",
   }));
 };

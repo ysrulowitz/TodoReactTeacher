@@ -68,6 +68,7 @@ export default function Todos({ userId }) {
           )
       );
   };
+  console.log(tasks)
 
   useEffect(() => {
     loadTasks();
